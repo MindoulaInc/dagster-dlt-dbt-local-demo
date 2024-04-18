@@ -16,6 +16,14 @@ from .dlt63 import mindoula_s3_source
 #     logger = get_dagster_logger()
 #     results = pipeline.create_pipeline(dlt_source, table_name="63_pharmacy")
 #     logger.info(results)
+@asset
+def payer_63_pharmacy(pipeline: DltResource):
+    """Copy over all pharmacy 63 data from flatfiles to parquet files"""
+
+    logger = get_dagster_logger()
+    dlt_source = mindoula_s3_source(file_glob="63/pharmacy/*.txt")
+    results = pipeline.create_pipeline(dlt_source, table_name="63_pharmacy")
+    logger.info(results)
 
 
 @asset
