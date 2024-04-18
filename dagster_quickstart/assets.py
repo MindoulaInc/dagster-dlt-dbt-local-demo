@@ -3,18 +3,28 @@ import requests
 
 import pandas as pd
 
-from dagster import (
-    MaterializeResult,
-    MetadataValue,
-    asset,
-)
+from dagster import MaterializeResult, MetadataValue, asset, get_dagster_logger
 from dagster_quickstart.configurations import HNStoriesConfig
+from .resources import DltResource
+from .dlt63 import payer_63_source
+
+
+@asset
+def payer_63_pipeline(pipeline: DltResource):
+
+    logger = get_dagster_logger()
+    results = pipeline.create_pipeline(
+        payer_63_source, source_data_dir="pharmacy", table_name="63_pharmacy"
+    )
+    logger.info(results)
 
 
 @asset
 def hackernews_top_story_ids(config: HNStoriesConfig):
     """Get top stories from the HackerNews top stories endpoint."""
-    top_story_ids = requests.get("https://hacker-news.firebaseio.com/v0/topstories.json").json()
+    top_story_ids = requests.get(
+        "https://hacker-news.firebaseio.com/v0/topstories.json"
+    ).json()
 
     with open(config.hn_top_story_ids_path, "w") as f:
         json.dump(top_story_ids[: config.top_stories_limit], f)
@@ -28,7 +38,9 @@ def hackernews_top_stories(config: HNStoriesConfig) -> MaterializeResult:
 
     results = []
     for item_id in hackernews_top_story_ids:
-        item = requests.get(f"https://hacker-news.firebaseio.com/v0/item/{item_id}.json").json()
+        item = requests.get(
+            f"https://hacker-news.firebaseio.com/v0/item/{item_id}.json"
+        ).json()
         results.append(item)
 
     df = pd.DataFrame(results)

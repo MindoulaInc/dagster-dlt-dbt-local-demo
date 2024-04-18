@@ -1,0 +1,27 @@
+# put your configuration values here
+
+[runtime]
+log_level="WARNING"  # the system log level of dlt
+# use the dlthub_telemetry setting to enable/disable anonymous usage data reporting, see https://dlthub.com/docs/telemetry
+dlthub_telemetry = true
+
+[sources.filesystem]
+# bucket_url = "bucket_url" # please set me up!
+bucket_url="file://input_data"
+file_glob="*"
+
+[destination.filesystem]
+bucket_url = "file://output_data"
+layout="{table_name}/{table_name}.{load_id}.{file_id}.{ext}" # current preconfigured naming scheme
+
+# set buffer size for extract and normalize stages
+[data_writer]
+buffer_max_items=10000
+file_max_items=100000
+
+[normalize]
+workers=50 
+
+[load]
+# have 50 concurrent load jobs
+workers=50

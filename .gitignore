@@ -163,3 +163,12 @@ cython_debug/
 
 # MacOS
 .DS_Store
+
+# input/output files
+*.txt
+*.parquet
+output_data/
+input_data/
+!input_data/.gitkeep
+!output_data/.gitkeep
+schemas/
