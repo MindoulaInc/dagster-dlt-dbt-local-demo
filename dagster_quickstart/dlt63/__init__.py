@@ -8,9 +8,9 @@ except ImportError:
     )
 
 
-def payer_63_source():
+def mindoula_s3_source(file_glob: str):
 
-    pharmacy = readers(file_glob="63/pharmacy/*.txt").read_csv_duckdb(
+    pharmacy = readers(file_glob=file_glob).read_csv_duckdb(
         chunk_size=10000, header=True, use_pyarrow=True
     )
 
@@ -28,7 +28,7 @@ if __name__ == "__main__":
         full_refresh=True,
     )
 
-    input_source = payer_63_source()
+    input_source = mindoula_s3_source("63/pharmacy/*.txt")
 
     load_info = pipeline.run(
         input_source, loader_file_format="parquet", table_name="63_pharmacy"
