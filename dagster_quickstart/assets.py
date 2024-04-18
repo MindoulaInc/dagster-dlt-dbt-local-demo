@@ -6,17 +6,16 @@ import pandas as pd
 from dagster import MaterializeResult, MetadataValue, asset, get_dagster_logger
 from dagster_quickstart.configurations import HNStoriesConfig
 from .resources import DltResource
-from .dlt63 import payer_63_source
+from .dlt63 import mindoula_s3_source
 
 
-@asset
-def payer_63_pipeline(pipeline: DltResource):
-
-    logger = get_dagster_logger()
-    results = pipeline.create_pipeline(
-        payer_63_source, source_data_dir="pharmacy", table_name="63_pharmacy"
-    )
-    logger.info(results)
+# @asset
+# def payer_63_pipeline(pipeline: DltResource):
+#
+#     dlt_source = mindoula_s3_source(file_glob="63/pharmacy/*.txt")
+#     logger = get_dagster_logger()
+#     results = pipeline.create_pipeline(dlt_source, table_name="63_pharmacy")
+#     logger.info(results)
 
 
 @asset

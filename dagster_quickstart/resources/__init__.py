@@ -6,6 +6,10 @@ class DltResource(ConfigurableResource):
     pipeline_name: str
     dataset_name: str
     destination: str
+    import_schema_path: str
+    export_schema_path: str
+    progress: str
+    full_refresh: bool
 
     def create_pipeline(self, resource_data, table_name):
 
