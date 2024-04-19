@@ -1,0 +1,520 @@
+version: 7
+version_hash: l44PH50rGYRw/Bgw9b5ahoRBG8H919t3iVpjiwbQtDs=
+engine_version: 9
+name: _63_load_duckdb
+tables:
+  _dlt_version:
+    columns:
+      version:
+        data_type: bigint
+        nullable: false
+      engine_version:
+        data_type: bigint
+        nullable: false
+      inserted_at:
+        data_type: timestamp
+        nullable: false
+      schema_name:
+        data_type: text
+        nullable: false
+      version_hash:
+        data_type: text
+        nullable: false
+      schema:
+        data_type: text
+        nullable: false
+    write_disposition: skip
+    description: Created by DLT. Tracks schema updates
+  _dlt_loads:
+    columns:
+      load_id:
+        data_type: text
+        nullable: false
+      schema_name:
+        data_type: text
+        nullable: true
+      status:
+        data_type: bigint
+        nullable: false
+      inserted_at:
+        data_type: timestamp
+        nullable: false
+      schema_version_hash:
+        data_type: text
+        nullable: true
+    write_disposition: skip
+    description: Created by DLT. Tracks completed loads
+  _dlt_pipeline_state:
+    columns:
+      version:
+        data_type: bigint
+        nullable: false
+      engine_version:
+        data_type: bigint
+        nullable: false
+      pipeline_name:
+        data_type: text
+        nullable: false
+      state:
+        data_type: text
+        nullable: false
+      created_at:
+        data_type: timestamp
+        nullable: false
+      version_hash:
+        data_type: text
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    write_disposition: append
+    x-normalizer:
+      seen-data: true
+  _63_medical:
+    columns:
+      memb_life_id_skey:
+        data_type: bigint
+        nullable: true
+      group_number:
+        data_type: text
+        nullable: true
+      group_section_number:
+        data_type: text
+        nullable: true
+      department_code_number:
+        data_type: text
+        nullable: true
+      package_code_nasco_class_code_facetsx:
+        data_type: text
+        nullable: true
+      subgroup:
+        data_type: text
+        nullable: true
+      relationship_code:
+        data_type: text
+        nullable: true
+      relationship_description:
+        data_type: text
+        nullable: true
+      level_of_coverage_description:
+        data_type: text
+        nullable: true
+      claim_type_code:
+        data_type: text
+        nullable: true
+      claim_number:
+        data_type: text
+        nullable: true
+      line_number:
+        data_type: text
+        nullable: true
+      claim_disposition:
+        data_type: bigint
+        nullable: true
+      payee_code:
+        data_type: bigint
+        nullable: true
+      network_indicator:
+        data_type: text
+        nullable: true
+      bill_type:
+        data_type: text
+        nullable: true
+      internal_provider_number:
+        data_type: text
+        nullable: true
+      provider_name:
+        data_type: text
+        nullable: true
+      provider_address_1:
+        data_type: text
+        nullable: true
+      provider_city:
+        data_type: text
+        nullable: true
+      provider_state:
+        data_type: text
+        nullable: true
+      provider_zip_code:
+        data_type: text
+        nullable: true
+      specialty_code:
+        data_type: text
+        nullable: true
+      specialty_code_description:
+        data_type: text
+        nullable: true
+      npi_reimbursement_number:
+        data_type: text
+        nullable: true
+      par_nonpar_code:
+        data_type: text
+        nullable: true
+      product_description:
+        data_type: text
+        nullable: true
+      place_of_service_code:
+        data_type: text
+        nullable: true
+      type_of_service_code:
+        data_type: text
+        nullable: true
+      cpt:
+        data_type: text
+        nullable: true
+      revenue_code:
+        data_type: text
+        nullable: true
+      primary_diagnosis_code_icd9:
+        data_type: text
+        nullable: true
+      secondary_diagnosis_code_icd9:
+        data_type: text
+        nullable: true
+      tertiary_diagnosis_code_icd9:
+        data_type: text
+        nullable: true
+      icd9_surgical_procedure_code_1:
+        data_type: text
+        nullable: true
+      icd9_surgical_procedure_code_2:
+        data_type: text
+        nullable: true
+      icd9_surgical_procedure_code_3:
+        data_type: text
+        nullable: true
+      icd9_surgical_procedure_code_4:
+        data_type: text
+        nullable: true
+      institutional_diagnosis_1_icd9:
+        data_type: text
+        nullable: true
+      institutional_diagnosis_2_icd9:
+        data_type: text
+        nullable: true
+      institutional_diagnosis_3_icd9:
+        data_type: text
+        nullable: true
+      institutional_diagnosis_4_icd9:
+        data_type: text
+        nullable: true
+      professional_diagnosis_1_icd9:
+        data_type: text
+        nullable: true
+      primary_diagnosis_code_icd10:
+        data_type: text
+        nullable: true
+      secondary_diagnosis_code_icd10:
+        data_type: text
+        nullable: true
+      tertiary_diagnosis_code_icd10:
+        data_type: text
+        nullable: true
+      icd10_surgical_procedure_code_1:
+        data_type: text
+        nullable: true
+      icd10_surgical_procedure_code_2:
+        data_type: text
+        nullable: true
+      icd10_surgical_procedure_code_3:
+        data_type: text
+        nullable: true
+      icd10_surgical_procedure_code_4:
+        data_type: text
+        nullable: true
+      institutional_diagnosis_1_icd10:
+        data_type: text
+        nullable: true
+      institutional_diagnosis_2_icd10:
+        data_type: text
+        nullable: true
+      institutional_diagnosis_3_icd10:
+        data_type: text
+        nullable: true
+      institutional_diagnosis_4_icd10:
+        data_type: text
+        nullable: true
+      professional_diagnosis_1_icd10:
+        data_type: text
+        nullable: true
+      primary_present_on_admission:
+        data_type: text
+        nullable: true
+      secondary_present_on_admission:
+        data_type: text
+        nullable: true
+      tertiary_present_on_admission:
+        data_type: text
+        nullable: true
+      discharge_status:
+        data_type: text
+        nullable: true
+      receipt_date:
+        data_type: date
+        nullable: true
+      paid_date:
+        data_type: date
+        nullable: true
+      line_service_from_date:
+        data_type: date
+        nullable: true
+      line_service_thru_date:
+        data_type: date
+        nullable: true
+      header_service_from_date:
+        data_type: date
+        nullable: true
+      header_service_thru_date:
+        data_type: date
+        nullable: true
+      admission_date:
+        data_type: date
+        nullable: true
+      discharge_date:
+        data_type: text
+        nullable: true
+      number_of_submitted_inpatient_days:
+        data_type: bigint
+        nullable: true
+      number_of_covered_inpatient_days:
+        data_type: bigint
+        nullable: true
+      number_of_services:
+        data_type: bigint
+        nullable: true
+      allowed_amount:
+        data_type: double
+        nullable: true
+      copay_amount:
+        data_type: double
+        nullable: true
+      coinsurance_amount:
+        data_type: double
+        nullable: true
+      deductible_amount:
+        data_type: double
+        nullable: true
+      paid_amount:
+        data_type: double
+        nullable: true
+      its_access_fees:
+        data_type: double
+        nullable: true
+      its_supplemental_fees:
+        data_type: double
+        nullable: true
+      surcharge_amount:
+        data_type: double
+        nullable: true
+      medicare_paid_amount:
+        data_type: double
+        nullable: true
+      non_covered_amount:
+        data_type: double
+        nullable: true
+      cob_amount:
+        data_type: double
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+      npi_rendering_number:
+        data_type: text
+        nullable: true
+      cpt_modifier_1:
+        data_type: text
+        nullable: true
+      provider_address_2:
+        data_type: text
+        nullable: true
+      cpt_modifier_2:
+        data_type: text
+        nullable: true
+    write_disposition: append
+    resource: read_csv_duckdb
+    x-normalizer:
+      seen-data: true
+  _63_pharmacy:
+    columns:
+      memb_life_id_skey:
+        data_type: bigint
+        nullable: true
+      group_number:
+        data_type: bigint 
+        nullable: true
+      package_code_nasco_class_code_facetsx:
+        data_type: text
+        nullable: true
+      subgroup:
+        data_type: text
+        nullable: true
+      relationship_code:
+        data_type: text
+        nullable: true
+      relationship_description:
+        data_type: text
+        nullable: true
+      level_of_coverage:
+        data_type: text
+        nullable: true
+      claim_number:
+        data_type: bigint
+        nullable: true
+      claim_disposition:
+        data_type: bigint
+        nullable: true
+      payee_code:
+        data_type: bigint
+        nullable: true
+      new_refill_indicator:
+        data_type: text
+        nullable: true
+      prescription_number:
+        data_type: text
+        nullable: true
+      pharmacy_number:
+        data_type: bigint
+        nullable: true
+      pharmacy_name:
+        data_type: text
+        nullable: true
+      pharmacy_address_1:
+        data_type: text
+        nullable: true
+      pharmacy_address_2:
+        data_type: text
+        nullable: true
+      pharmacy_city:
+        data_type: text
+        nullable: true
+      pharmacy_state:
+        data_type: text
+        nullable: true
+      pharmacy_zip:
+        data_type: text
+        nullable: true
+      prescribing_practitioner_id_npi:
+        data_type: text
+        nullable: true
+      prescribing_practitioner_id_dea:
+        data_type: text
+        nullable: true
+      prescribing_provider_name:
+        data_type: text
+        nullable: true
+      ndc:
+        data_type: text
+        nullable: true
+      drug_name:
+        data_type: text
+        nullable: true
+      specialty_drug_indicator:
+        data_type: text
+        nullable: true
+      specialty_drug_category:
+        data_type: text
+        nullable: true
+      generic_indicator:
+        data_type: text
+        nullable: true
+      formulary_indicator:
+        data_type: text
+        nullable: true
+      mail_order_indicator:
+        data_type: text
+        nullable: true
+      therapeutic_class:
+        data_type: text
+        nullable: true
+      strength:
+        data_type: text
+        nullable: true
+      maintenance_indicator:
+        data_type: text
+        nullable: true
+      drug_tier:
+        data_type: text
+        nullable: true
+      fill_date:
+        data_type: date
+        nullable: true
+      paid_date:
+        data_type: date
+        nullable: true
+      days_supply:
+        data_type: bigint
+        nullable: true
+      quantity_dispensed:
+        data_type: double
+        nullable: true
+      refill_number:
+        data_type: bigint
+        nullable: true
+      number_of_refills:
+        data_type: bigint
+        nullable: true
+      copayment:
+        data_type: double
+        nullable: true
+      coinsurance:
+        data_type: double
+        nullable: true
+      deductible:
+        data_type: double
+        nullable: true
+      paid_amount:
+        data_type: double
+        nullable: true
+      dispensing_fee:
+        data_type: double
+        nullable: true
+      awp:
+        data_type: double
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    write_disposition: replace
+    resource: read_csv_duckdb
+    x-normalizer:
+      seen-data: true
+settings:
+  detections:
+  - iso_timestamp
+  default_hints:
+    not_null:
+    - _dlt_id
+    - _dlt_root_id
+    - _dlt_parent_id
+    - _dlt_list_idx
+    - _dlt_load_id
+    foreign_key:
+    - _dlt_parent_id
+    root_key:
+    - _dlt_root_id
+    unique:
+    - _dlt_id
+normalizers:
+  names: snake_case
+  json:
+    module: dlt.common.normalizers.json.relational
+previous_hashes:
+- kRH08WNgNxvJwzByE40u61/ivppp6V5CCvhEWfM6yR0=
+- NHfF99lfx3H04yjuxhr4MEMB+kjDvpnWb1lEA+H73jI=
+- zcTu/3irHrbspOvTbtF7deMxQG8jOmWDOZtf//mFBsY=
+- EB2HPvDhLWsTVus47+BF72wjs5yMrqFPfuVbC1bb0Rg=
+- xpNKCpaU/umx4qLuMwfbRbnzw5vNySY6h170udgovkg=
+- gjyewIv30yYU7jyvXQd5ZRa/4I5TXWpJ+D9xMwB0P4I=
+- s/dNPHcZRGSHJwPQSxkeplTqxtftUobhe0hStlZw0Bo=

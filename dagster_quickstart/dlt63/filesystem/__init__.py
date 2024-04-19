@@ -22,7 +22,11 @@ from .readers import (
 from .settings import DEFAULT_CHUNK_SIZE
 
 
-@dlt.source(_impl_cls=ReadersSource, spec=FilesystemConfigurationResource)
+@dlt.source(
+    _impl_cls=ReadersSource,
+    spec=FilesystemConfigurationResource,
+    schema_contract={"columns": "freeze"},
+)
 def readers(
     bucket_url: str = dlt.secrets.value,
     credentials: Union[FileSystemCredentials, AbstractFileSystem] = dlt.secrets.value,
